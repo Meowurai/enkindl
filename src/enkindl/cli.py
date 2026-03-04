@@ -1,6 +1,8 @@
 
 import argparse 
 
+from enkindl.init import scaffold
+
 def main():
     parser = argparse.ArgumentParser(
         prog="enkindl",
@@ -20,7 +22,7 @@ def main():
     args = parser.parse_args()
 
     if args.command == "init":
-        print(f"Creating project: {args.name}")
+        scaffold(args.name)
     elif args.command == "explain":
         print(f"Explaining: {args.topic}")
     else:
