@@ -1,0 +1,17 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "enkindl"
+version = "0.1.0"
+description = "A tiny CLI tool that scaffolds Python projects for beginners."
+readme = "README.md"
+requires-python = ">3.12"
+license = "MIT"
+authors = [
+    { name = "Caj Michael Andersson", email = "you@example.com" }
+]
+
+[project.scripts]
+enkindl = "enkindl.cli:main"
