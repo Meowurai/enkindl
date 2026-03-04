@@ -1,6 +1,7 @@
 
 import argparse 
 
+from enkindl import __version__
 from enkindl.init import scaffold
 from enkindl.explain import explain
 
@@ -8,6 +9,9 @@ def main():
     parser = argparse.ArgumentParser(
         prog="enkindl",
         description="A tiny CLI tool that scaffolds Python projects for beginners."
+    )
+    parser.add_argument(
+        "-v", "--version", action="version", version=f"enkindl {__version__}"
     )
 
     subparsers = parser.add_subparsers(dest="command")
