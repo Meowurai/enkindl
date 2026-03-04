@@ -40,6 +40,16 @@ README_TEMPLATE = """\
 {description}
 """
 
+TEST_TEMPLATE = """\
+from {name}.cli import main
+
+
+def test_main(capsys):
+    main()
+    output = capsys.readouterr().out
+    assert "{name} is alive!" in output
+"""
+
 
 def ask(prompt: str, default: str = "") -> str:
     if default:
@@ -79,6 +89,11 @@ def scaffold(name: str) -> None:
     (src / "__init__.py").write_text("")
     (src / "cli.py").write_text(CLI_TEMPLATE.format(name=name))
 
+    # Create tests
+    tests = root / "tests"
+    tests.mkdir()
+    (tests / f"test_cli.py").write_text(TEST_TEMPLATE.format(name=name))
+
     print(f"\nCreated project '{name}/'")
     print()
     print("Next steps:")
@@ -86,3 +101,7 @@ def scaffold(name: str) -> None:
     print(f"  python -m venv .venv")
     print(f"  pip install -e .")
     print(f"  {name}")
+    print()
+    print("Run tests:")
+    print(f"  pip install pytest")
+    print(f"  pytest")

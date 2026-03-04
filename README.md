@@ -26,6 +26,8 @@ myproject/
 │   └── myproject/
 │       ├── __init__.py
 │       └── cli.py
+├── tests/
+│   └── test_cli.py
 ├── pyproject.toml
 ├── README.md
 └── .gitignore
@@ -39,6 +41,13 @@ python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -e .
 myproject                   # your CLI command works!
+```
+
+It even comes with a passing test:
+
+```
+pip install pytest
+pytest
 ```
 
 ### Explain Python concepts
@@ -56,6 +65,7 @@ enkindl explain .gitignore
 enkindl explain build
 enkindl explain pypi
 enkindl explain entry-points
+enkindl explain pytest
 ```
 
 Don't know what's available? Just ask for a topic that doesn't exist and enkindl will list them all.

@@ -138,6 +138,31 @@ called 'mycommand' that runs the main() function in mypackage/cli.py."
 That's why after pip install, you can type the command name directly
 in your terminal — pip generated a small script that calls your function.
 """,
+"pytest": """
+pytest is the most popular testing tool for Python.
+
+A test is a function that checks if your code does what you expect:
+    def test_add():
+        assert 1 + 1 == 2
+
+That's it. Name the function test_*, use assert, done.
+
+To run your tests:
+    pip install pytest
+    pytest
+
+pytest automatically finds files named test_*.py and runs every
+function inside them that starts with test_.
+
+A useful feature is capsys, which captures printed output:
+    def test_greeting(capsys):
+        print("hello")
+        output = capsys.readouterr().out
+        assert "hello" in output
+
+You don't need to configure anything. Just write test files
+and run pytest.
+""",
 }
 
 def explain(topic: str) -> None:
