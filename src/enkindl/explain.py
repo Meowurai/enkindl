@@ -71,6 +71,73 @@ The "-e" means "make it editable."
 
 This is the go-to command during development.
 """,
+"requirements.txt": """
+requirements.txt is a simple list of packages your project depends on.
+
+Example:
+    requests==2.31.0
+    pandas>=2.0
+
+Each line is a package name, optionally pinned to a version.
+
+It's used with: pip install -r requirements.txt
+
+For modern projects, you can also list dependencies in pyproject.toml
+under [project.dependencies] instead. But requirements.txt is still
+widely used, especially for applications (vs. libraries).
+""",
+    ".gitignore": """
+.gitignore tells git which files to NOT track.
+
+Common entries for Python projects:
+    __pycache__/    - compiled bytecode (Python creates this automatically)
+    *.egg-info/     - package metadata (created during install)
+    dist/           - built packages (created when you build for PyPI)
+    .venv/          - your virtual environment
+
+Without a .gitignore, you'd accidentally commit thousands of
+generated files. Always set this up before your first commit.
+""",
+    "build": """
+"Building" a Python package means turning your source code into
+a format that pip can install.
+
+The two formats are:
+    sdist   - a source distribution (basically a .tar.gz of your code)
+    wheel   - a pre-built distribution (.whl file, installs faster)
+
+You build with: python -m build
+This reads your pyproject.toml and creates both formats in dist/.
+
+You don't need to build during development — pip install -e . handles
+that. You only build when you're ready to publish to PyPI.
+""",
+    "pypi": """
+PyPI (Python Package Index) is where pip downloads packages from.
+
+When you type: pip install requests
+pip goes to pypi.org, finds the 'requests' package, and installs it.
+
+Anyone can publish packages to PyPI. To publish yours:
+    1. Build it:    python -m build
+    2. Upload it:   python -m twine upload dist/*
+
+There's also TestPyPI (test.pypi.org) for practicing without
+polluting the real index.
+""",
+    "entry-points": """
+Entry points are how a Python package creates terminal commands.
+
+In pyproject.toml:
+    [project.scripts]
+    mycommand = "mypackage.cli:main"
+
+This tells pip: "when you install this package, create a command
+called 'mycommand' that runs the main() function in mypackage/cli.py."
+
+That's why after pip install, you can type the command name directly
+in your terminal — pip generated a small script that calls your function.
+""",
 }
 
 def explain(topic: str) -> None:
