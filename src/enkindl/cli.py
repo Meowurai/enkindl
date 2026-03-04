@@ -2,6 +2,7 @@
 import argparse 
 
 from enkindl.init import scaffold
+from enkindl.explain import explain
 
 def main():
     parser = argparse.ArgumentParser(
@@ -24,6 +25,6 @@ def main():
     if args.command == "init":
         scaffold(args.name)
     elif args.command == "explain":
-        print(f"Explaining: {args.topic}")
+        explain(args.topic)
     else:
         parser.print_help()
