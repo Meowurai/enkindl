@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">3.12"
 license = "MIT"
 authors = [
-    { name = "Caj Michael Andersson", email = "you@example.com" }
+    { name = "Caj Michael Andersson", email = "caj.michael.dev@gmail.com" }
 ]
 
 [project.scripts]
