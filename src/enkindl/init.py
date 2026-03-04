@@ -52,6 +52,16 @@ def test_main(capsys):
 
 
 def ask(prompt: str, default: str = "") -> str:
+    """
+    Prompt the user for input with an optional default value.
+    
+    Args:
+        prompt (str): The message to display to the user.
+        default (str, optional): The default value to return if the user provides no input. Defaults to "".
+    
+    Returns:
+        str: The user's input, stripped of leading/trailing whitespace, or the default value if no input was provided.
+    """
     if default:
         value = input(f"{prompt} [{default}]: ").strip()
         return value if value else default
@@ -59,6 +69,30 @@ def ask(prompt: str, default: str = "") -> str:
 
 
 def scaffold(name: str) -> None:
+    """
+    Create a new Python project structure with scaffolding files.
+
+    This function sets up a basic Python project layout including:
+    - A source directory structure (src/{name})
+    - Configuration files (pyproject.toml, .gitignore, README.md)
+    - An __init__.py file for the package
+    - A CLI module template
+    - A test directory with a sample test file
+
+    Args:
+        name (str): The name of the project to scaffold.
+
+    Raises:
+        SystemExit: If a folder with the given name already exists.
+
+    Example:
+        >>> scaffold("my_project")
+        Setting up 'my_project'...
+        Short description: My awesome Python project
+        Author name: John Doe
+        Created project 'my_project/'
+        ...
+    """
     root = Path(name)
 
     if root.exists():

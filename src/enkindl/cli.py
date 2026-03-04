@@ -6,6 +6,19 @@ from enkindl.init import scaffold
 from enkindl.explain import explain
 
 def main():
+    """
+    Entry point for the enkindl CLI application.
+    
+    Parses command-line arguments and delegates to the appropriate subcommand handler.
+    Supports the following commands:
+    
+    - init: Scaffold a new Python project with the specified name
+    - explain: Display an explanation of a given Python concept
+    
+    The tool also supports a --version flag to display the current version.
+    
+    If no command is provided, displays the help message.
+    """
     parser = argparse.ArgumentParser(
         prog="enkindl",
         description="A tiny CLI tool that scaffolds Python projects for beginners."

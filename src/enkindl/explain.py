@@ -166,6 +166,18 @@ and run pytest.
 }
 
 def explain(topic: str) -> None:
+    """
+    Display an explanation for a given topic.
+    
+    Prints the explanation text for the specified topic from the TOPICS dictionary.
+    If the topic is not found, displays an error message and lists all available topics.
+    
+    Args:
+        topic (str): The name of the topic to explain.
+    
+    Returns:
+        None
+    """
     result = TOPICS.get(topic)
 
     if result:
